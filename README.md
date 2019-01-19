@@ -14,7 +14,7 @@ This is solution for KIXEYE DevOps Automated Deployment Challenge
  
 `docker-compose up --build`
 
-3. After the task show:
+3. After the task shows:
 
 `my-app      | TASK [compile : Run webserver] *************************************************`
 
