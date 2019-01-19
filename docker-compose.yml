@@ -1,0 +1,32 @@
+version: "3"
+services:
+  app:
+    build:
+      context: ./java
+    ports:
+      - 8080:8080
+    dns:
+      - 8.8.8.8
+    container_name: my-app
+    links:
+      - "my-redis:redis.local"
+    networks:
+      - kixeyenet
+    command: ansible-playbook playbook.yml
+  my-redis:
+    build:
+      context: ./redis
+    container_name: my-redis
+    domainname: redis.local
+    ports:
+      - 6379:6379
+    # volumes:
+    #   - ./app/resources/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    command: "redis-server /usr/local/etc/redis/redis.conf"
+    dns:
+      - 8.8.8.8
+    networks:
+      - kixeyenet
+networks:
+  kixeyenet:
+    driver: bridge

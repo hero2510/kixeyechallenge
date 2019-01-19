@@ -1,0 +1,20 @@
+---
+- name: Install git
+  apt:
+    name: git
+
+- name: Create app directory
+  file:
+    name: /app
+    state: directory
+
+- name: Clone app from github
+  git:
+    dest=/app
+    repo=https://github.com/Kixeye/testapp.git
+
+- name: Untar testapp.tar
+  command: tar -xf /app/testapp.tar -C /app/
+
+- name: Run webserver
+  command: java -cp /app/testapp.jar kixeye.testapp.Main

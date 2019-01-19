@@ -1,0 +1,7 @@
+- hosts: localhost
+  roles:
+    - role: java
+      become: yes
+
+    - role: compile
+      become: yes
