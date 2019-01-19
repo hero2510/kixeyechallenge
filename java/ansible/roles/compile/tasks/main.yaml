@@ -14,7 +14,9 @@
     repo=https://github.com/Kixeye/testapp.git
 
 - name: Untar testapp.tar
-  command: tar -xf /app/testapp.tar -C /app/
+  unarchive:
+    src: /app/testapp.tar
+    dest: /app
 
 - name: Run webserver
   command: java -cp /app/testapp.jar kixeye.testapp.Main

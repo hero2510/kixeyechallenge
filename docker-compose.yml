@@ -10,6 +10,8 @@ services:
     container_name: my-app
     links:
       - "my-redis:redis.local"
+    depends_on:
+      - my-redis
     networks:
       - kixeyenet
     command: ansible-playbook playbook.yml
